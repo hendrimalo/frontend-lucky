@@ -3,20 +3,20 @@ import FormRegister from '../components/organism/FormRegister';
 /* eslint-disable linebreak-style */
 const Register = function () {
   return (
-    <div className="container">
+    <div className="container mt-2">
       <div className="text-center">
-        <h1>Lucky Barbershop</h1>
+        <h1 className="display-4 mb-5">Lucky Barbershop</h1>
       </div>
-      <div className="card">
-        <div className="card-body">
-          <div className="text-center">
-            <h3 className="card-title">Register</h3>
-            <p className="card-text">
-              Belum punya akun?
-              <a href="">daftar</a>
-            </p>
+      <div className="row d-flex justify-content-center">
+        <div className="col-md-6">
+          <div className="card px-4 py-3">
+            <div className="card-body">
+              <div className="text-center">
+                <h3 className="card-title">Sign Up</h3>
+              </div>
+              <FormRegister />
+            </div>
           </div>
-          <FormRegister />
         </div>
       </div>
     </div>

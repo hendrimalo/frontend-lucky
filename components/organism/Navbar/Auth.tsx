@@ -42,6 +42,9 @@ const AuthNavbar = function () {
           <Link href="/review">
             <a className="dropdown-item">Review</a>
           </Link>
+          <Link href="/order-list">
+            <a className="dropdown-item">Order</a>
+          </Link>
           <div className="dropdown-divider" />
           <Link href="/">
             <button type="button" onClick={onLogout} className="dropdown-item">Logout</button>

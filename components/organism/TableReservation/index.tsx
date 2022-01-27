@@ -2,7 +2,7 @@ import { useCallback, useState, useEffect } from 'react';
 import { ReservationTypes } from '../../../services/data-types';
 import { getReservation } from '../../../services/public';
 
-const TableBook = function () {
+const TableReservation = function () {
   const [dataReservation, setDataReservation] = useState([]);
 
   const getDataReservation = useCallback(async () => {
@@ -39,4 +39,4 @@ const TableBook = function () {
   );
 };
 
-export default TableBook;
+export default TableReservation;

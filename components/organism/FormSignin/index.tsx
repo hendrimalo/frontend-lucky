@@ -42,6 +42,7 @@ const FormSignin = function () {
           placeholder="Username"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
+          required
         />
       </div>
       <div className="form-group">
@@ -52,12 +53,13 @@ const FormSignin = function () {
           placeholder="Password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+          required
         />
       </div>
       <div className="text-right">
         <button
           type="button"
-          className="btn btn-primary text-right"
+          className="btn btn-dark text-right"
           onClick={onSubmit}
         >
           Login

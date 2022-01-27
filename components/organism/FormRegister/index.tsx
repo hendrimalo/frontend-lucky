@@ -42,6 +42,7 @@ const FormRegister = function () {
           className="form-control"
           placeholder="Username"
           onChange={(event) => setUsername(event.target.value)}
+          required
         />
       </div>
       <div className="form-group">
@@ -51,6 +52,7 @@ const FormRegister = function () {
           className="form-control"
           placeholder="Password"
           onChange={(event) => setPassword(event.target.value)}
+          required
         />
       </div>
       <div className="form-group">
@@ -60,6 +62,7 @@ const FormRegister = function () {
           className="form-control"
           placeholder="Email"
           onChange={(event) => setEmail(event.target.value)}
+          required
         />
       </div>
       <div className="form-group">
@@ -69,15 +72,16 @@ const FormRegister = function () {
           className="form-control"
           placeholder="Phone Number"
           onChange={(event) => setPhoneNumber(event.target.value)}
+          required
         />
       </div>
       <div className="text-right">
         <button
           type="button"
-          className="btn btn-primary text-right"
+          className="btn btn-dark text-right"
           onClick={onSubmit}
         >
-          Register
+          Sign up
         </button>
       </div>
     </>

@@ -1,10 +1,111 @@
-import { orderDetailTypes } from '../../services/data-types';
+import jwtDecode from 'jwt-decode';
+import FormReview from '../../components/organism/FormReview';
+import Navbar from '../../components/organism/Navbar';
 import { getOrderDetail } from '../../services/user';
 
-const OrderDetail = function (props: orderDetailTypes) {
-  const { orderDetail } = props;
+interface OrderDetailTypes {
+  dataOrder: {
+    _id: string;
+    date: string;
+    time: string;
+    transactionId: {
+      date: string;
+      time: string;
+      member: string;
+      payment: string;
+      product: string;
+    }
+    reviewId: {
+      review: string;
+      rating: string;
+    }
+  }
+  user: {
+    user: {
+      username: string;
+    }
+  }
+}
+
+const OrderDetail = function (props: OrderDetailTypes) {
+  const { dataOrder, user } = props;
   return (
-    <h1>{orderDetail.date}</h1>
+    <>
+      <Navbar />
+      <br />
+      <br />
+      <br />
+      <div className="container">
+        <div className="card">
+          <div className="card-header">
+            <h4 className="text-weight-bold">Reservation</h4>
+          </div>
+          <div className="card-body">
+            <p>
+              date time Reservation:
+              {dataOrder.date}
+              {' '}
+              {dataOrder.time}
+            </p>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div className="container">
+        <div className="card">
+          <div className="card-header">
+            <h4 className="text-weight-bold">Transaction</h4>
+          </div>
+          <div className="card-body">
+            <p>
+              date time:
+              {dataOrder.transactionId.date}
+              {' '}
+              {dataOrder.transactionId.time}
+            </p>
+            <p>
+              member:
+              {dataOrder.transactionId.member}
+            </p>
+            <p>
+              payment:
+              {dataOrder.transactionId.payment}
+            </p>
+            <p>
+              product:
+              {dataOrder.transactionId.product}
+            </p>
+            <p>
+              time:
+              {dataOrder.transactionId.time}
+            </p>
+          </div>
+        </div>
+      </div>
+      <br />
+      {dataOrder.reviewId ? (
+        <div className="container">
+          <div className="card">
+            <div className="card-header">
+              <h4 className="text-weight-bold">Review</h4>
+            </div>
+            <div className="card-body">
+              <p>
+                review:
+                {dataOrder.reviewId.review}
+              </p>
+              <p>
+                rating:
+                {dataOrder.reviewId.rating}
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <FormReview reservationId={dataOrder._id} username={user.user.username} />
+      )}
+    </>
+
   );
 };
 
@@ -33,10 +134,13 @@ export async function getServerSideProps({ req, params }: GetServerSideProps) {
   }
 
   const jwtToken = Buffer.from(token, 'base64').toString('ascii');
+  const decode = jwtDecode(jwtToken);
   const response = await getOrderDetail(id, jwtToken);
   return {
     props: {
-      orderDetail: response.data,
+      dataOrder: response.data,
+      // output decode = object user
+      user: decode,
     },
   };
 }

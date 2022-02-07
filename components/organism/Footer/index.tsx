@@ -1,8 +1,11 @@
 const Footer = function () {
   return (
-    <div className="container text-center" style={{ marginTop: '50px' }}>
+    <div
+      className="footer text-center"
+      style={{ height: '160px' }}
+    >
       <h2 className="display-5">Lucky Barbershop</h2>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing el</p>
+      <p>As Good As You Will Be</p>
     </div>
   );
 };

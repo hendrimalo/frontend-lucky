@@ -17,7 +17,8 @@ const Pricing = function () {
   }, []);
 
   return (
-    <div className="container">
+    <div className="pricing">
+      <h2 className="text-center mb-3">Pricing</h2>
       <div className="row">
         {dataService.map((service: ServiceTypes) => (
           <ListPrice

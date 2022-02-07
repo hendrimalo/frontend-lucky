@@ -1,22 +1,25 @@
 const StepReservation = function () {
   return (
-    <div className="container text-center">
-      <h2>Step To Reservation</h2>
-      <div className="row" style={{ marginTop: '30px' }}>
-        <div className="col-sm-3">
-          Halo1
+    <section className="step-reservation">
+      <div className="step-reservation-content">
+        <h2 className="mb-3">Step To Reservation</h2>
+        <div className="row">
+          <div className="col-sm-4">
+            <h3 className="text-center font-weight-bold">1</h3>
+            <p>Login / Signup Account.</p>
+          </div>
+          <div className="col-sm-4">
+            <h3 className="text-center font-weight-bold">2</h3>
+            <p>Click Menu Account on Navbar.</p>
+          </div>
+          <div className="col-sm-4">
+            <h3 className="text-center font-weight-bold">3</h3>
+            <p>Click Reservation and Fill Form.</p>
+          </div>
         </div>
-        <div className="col-sm-3">
-          Halo2
-        </div>
-        <div className="col-sm-3">
-          Halo3
-        </div>
-        <div className="col-sm-3">
-          Halo4
-        </div>
+        <hr />
       </div>
-    </div>
+    </section>
   );
 };
 

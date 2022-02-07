@@ -27,7 +27,6 @@ const FormRegister = function () {
       if (response.error) {
         toast.error(response.message);
       } else {
-        console.log(data);
         toast.success('Register success');
         router.push('/signin');
       }

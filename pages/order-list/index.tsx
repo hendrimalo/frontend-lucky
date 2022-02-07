@@ -1,8 +1,23 @@
+import jwtDecode from 'jwt-decode';
 import TableOrder from '../../components/organism/TableOrder';
+import Navbar from '../../components/organism/Navbar';
 
-const OrderList = function () {
+interface OrderListTypes {
+  user: {
+    username: string;
+  };
+}
+
+const OrderList = function (props: OrderListTypes) {
+  const { user } = props;
   return (
-    <TableOrder />
+    <>
+      <Navbar />
+      <br />
+      <br />
+      <br />
+      <TableOrder data={user.username} />
+    </>
   );
 };
 
@@ -24,8 +39,10 @@ export async function getServerSideProps({ req }: GetServerSideProps) {
       },
     };
   }
+  const jwtToken = Buffer.from(token, 'base64').toString('ascii');
+  const decode = jwtDecode(jwtToken);
   return {
-    props: {},
+    props: decode,
   };
 }
 

@@ -1,12 +1,18 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import ReactStars from 'react-rating-stars-component';
+import { Rating } from 'react-simple-star-rating';
 import 'react-toastify/dist/ReactToastify.css';
 import { postReview } from '../../../services/user';
 
-const FormReview = function () {
-  const [username, setUsername] = useState('');
+interface FormReviewProps {
+  reservationId: string;
+  username: string
+}
+
+const FormReview = function (props: FormReviewProps) {
+  const { reservationId, username } = props;
+
   const [review, setReview] = useState('');
   const [rating, setRating] = useState(0);
 
@@ -14,12 +20,13 @@ const FormReview = function () {
 
   const onSubmit = async () => {
     const data = {
+      reservationId,
       username,
       review,
-      rating,
+      rating: rating / 20,
     };
 
-    if (!username || !review || !rating) {
+    if (!review || !rating) {
       toast.error('Please check input form login');
     } else {
       const response = await postReview(data);
@@ -33,17 +40,6 @@ const FormReview = function () {
   };
   return (
     <div className="container">
-
-      <div className="form-group">
-        <label htmlFor="username">Username</label>
-        <input
-          type=""
-          className="form-control"
-          placeholder="Username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-      </div>
       <div className="form-group">
         <label htmlFor="password">Review</label>
         <input
@@ -57,16 +53,9 @@ const FormReview = function () {
       </div>
       <div className="form-group">
         <label htmlFor="rating">Rating</label>
-        <ReactStars
-          type="number"
-          count={5}
-          size={26}
-          emptyIcon={<i className="far fa-star" />}
-          fullIcon={<i className="fa fa-star" />}
-          activeColor="#ffd700"
-          value={rating}
-          onChange={(event) => setRating(event)}
-          required
+        <Rating
+          ratingValue={rating}
+          onClick={(event) => setRating(event)}
         />
         ,
       </div>

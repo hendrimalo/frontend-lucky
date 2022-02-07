@@ -6,30 +6,28 @@ export interface LoginTypes {
 export interface ReservationTypes {
     _id: string;
     username: string;
-    phoneNumber: number;
+    userStatus: string;
+    phoneNumber: string;
     date: string;
     time: string;
 }
 
+export interface PostReservationTypes {
+    username: string;
+    userStatus: string;
+    phoneNumber: string;
+    date: any;
+    time: any;
+}
+
 export interface orderTypes {
     _id: string;
+    reviewId: object;
     transactionId: {
         date: string;
         payment: string;
         product: string;
         total: string;
-    }
-}
-
-export interface orderDetailTypes {
-    orderDetail: {
-        _id: string;
-        username: string;
-        userStatus: string;
-        phoneNumber: string;
-        date: string;
-        time: string;
-        status: string;
     }
 }
 

@@ -1,5 +1,4 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import DatePicker from 'react-datepicker';
 import Cookies from 'js-cookie';
@@ -11,34 +10,27 @@ import setMinutes from 'date-fns/setMinutes';
 import { format } from 'date-fns';
 import jwtDecode from 'jwt-decode';
 import { postReservation } from '../../../services/user';
-import { JWTTypes, UserTypes } from '../../../services/data-types';
+import { JWTTypes } from '../../../services/data-types';
 
 const FormReservation = function () {
-  const router = useRouter();
-
-  const [user, setUser] = useState({
-    username: '',
-  });
   const [username, setUsername] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-
+  const [date, setDate] = React.useState<any>('');
+  const [time, setTime] = React.useState<any>('');
   useEffect(() => {
     const token = Cookies.get('token');
     if (token) {
       const jwtToken = atob(token);
       const payload: JWTTypes = jwtDecode(jwtToken);
-      const userFromPayload: UserTypes = payload.user;
+      const userFromPayload = payload.user;
 
-      setUser(userFromPayload);
       setUsername(userFromPayload.username);
       setPhoneNumber(userFromPayload.phoneNumber);
     }
   }, []);
 
-  const addDays = function (date, days) {
-    const result = new Date(date);
+  const addDays = function (dateNow: any, days: number) {
+    const result = new Date(dateNow);
     result.setDate(result.getDate() + days);
     return result;
   };
@@ -50,37 +42,28 @@ const FormReservation = function () {
       phoneNumber,
       date: format(new Date(date), 'yyyy-MM-dd'),
       time: format(new Date(time), 'hh:mm a'),
+      // date,
+      // time,
     };
 
     if (!phoneNumber || !date || !time) {
       toast.error('Please check input form reservation');
     } else {
       const response = await postReservation(data);
-      console.log(response);
       if (response.error) {
         toast.error(JSON.stringify(response.message));
       } else {
-        router.reload(window.location.pathname);
+        // router.reload(window.location.pathname);
         toast.success('Submit reservation successs');
+        setTimeout(() => { window.location.reload(); }, 1200);
       }
     }
   };
 
   return (
-    <div className="card container">
+    <div className="card container bg-dark text-white">
       <div className="card-body">
         <h5 className="card-title text-center">Form Reservation</h5>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            disabled
-          />
-        </div>
         <div className="form-group">
           <label htmlFor="phoneNumber">Phone Number</label>
           <input

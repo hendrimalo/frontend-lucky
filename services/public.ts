@@ -1,4 +1,3 @@
-// http api = localhost:3000/api/v1/user/{endpoint}
 import axios from 'axios';
 
 const ROOT_API = process.env.NEXT_PUBLIC_API;

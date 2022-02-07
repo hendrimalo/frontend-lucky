@@ -1,7 +1,6 @@
-// http api = localhost:3000/api/v1/user/{endpoint}
 import axios from 'axios';
 import callAPI from './config';
-import { ReservationTypes, ReviewTypes } from './data-types';
+import { PostReservationTypes, ReviewTypes } from './data-types';
 
 const ROOT_API = process.env.NEXT_PUBLIC_API;
 const API_VERSION = 'api/v1';
@@ -15,7 +14,7 @@ export async function getUserTransaction(username: string) {
   return axiosResponse.data;
 }
 
-export async function postReservation(data: ReservationTypes) {
+export async function postReservation(data: PostReservationTypes) {
   const url = `${ROOT_API}/${API_VERSION}/user/reservation`;
 
   return callAPI({

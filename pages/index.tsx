@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import Navbar from '../components/organism/Navbar';
-import Jumbotron from '../components/organism/Jumbotron';
+import Banner from '../components/organism/Banner';
 import StepReservation from '../components/organism/StepReservation';
 import Footer from '../components/organism/Footer';
 import Pricing from '../components/organism/Pricing';
@@ -13,15 +13,9 @@ const Home = function () {
   return (
     <>
       <Navbar />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Jumbotron />
+      <Banner />
+      <hr />
       <StepReservation />
-      <br />
-      <br />
-      <br />
       <Pricing />
       <Footer />
     </>

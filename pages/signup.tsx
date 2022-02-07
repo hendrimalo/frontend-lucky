@@ -5,7 +5,7 @@ const Register = function () {
   return (
     <div className="container mt-2">
       <div className="text-center">
-        <h1 className="display-4 mb-5">Lucky Barbershop</h1>
+        <h1 className="display-4 mb-5 text-white">Lucky Barbershop</h1>
       </div>
       <div className="row d-flex justify-content-center">
         <div className="col-md-6">

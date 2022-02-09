@@ -14,7 +14,6 @@ const Home = function () {
     <>
       <Navbar />
       <Banner />
-      <hr />
       <StepReservation />
       <Pricing />
       <Footer />

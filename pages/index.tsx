@@ -5,6 +5,7 @@ import Banner from '../components/organism/Banner';
 import StepReservation from '../components/organism/StepReservation';
 import Footer from '../components/organism/Footer';
 import Pricing from '../components/organism/Pricing';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = function () {
   useEffect(() => {
